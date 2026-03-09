@@ -1,9 +1,17 @@
 const { Collection, REST, Routes } = require('discord.js');
 const fs = require('fs');
 const ascii = require('ascii-table');
+const express = require('express');
 require('dotenv').config();
 
+const app = express();
+app.all('/', (req, res) => {
+  res.send('<p>Hosting Active</p>');
+});
+
 module.exports = async (client) => {
+  app.listen(3000, () => console.log('Server is online!'));
+
   let table = new ascii('Commands');
   table.setHeading('Command', 'Load status');
 
